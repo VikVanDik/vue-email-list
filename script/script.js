@@ -4,15 +4,19 @@ const { createApp } = Vue;
 createApp({
   data () {
     return{
-      urlAPI : 'https://flynn.boolean.careers/exercises/api/random/mail'
+      urlAPI : 'https://flynn.boolean.careers/exercises/api/random/mail',
+      mails : []
     }
   },
 
   methods:{
+
+
     emailStamp (){
       axios.get(this.urlAPI)
         .then((result)=>{
-          console.log(result.data.response)
+          this.mails.push(result.data.response)
+          console.log(this.mails);
         })
       },
 
